@@ -44,15 +44,14 @@ public class Main {
 	    	
 	    	
 	    }*/
-		//Listas de datos
-        List<String> lista1 = new ArrayList<String>();
-        List<String> lista2 = new ArrayList<String>();
+		
         //Direccion del documento del que se extraeran los datos
       	String csvFile = "files/DSL-StrongPasswordData.csv";
       	//Porcentaje
-      	Float por = new Float(95);
+      	Float por = new Float(80);
         Muestreo prueba = new Muestreo();
-        prueba.muestreo(csvFile, por, lista1, lista2);
+        //Realizamos el muestreo
+        prueba.muestreo(csvFile, por);
 	}
 
 }
