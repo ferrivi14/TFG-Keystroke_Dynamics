@@ -1,6 +1,6 @@
 # Keystroke Dynamics
 
-Esto es un Trabajo de Fin de Grado realizado por el alumno Fernando Rivilla Bravo de la Universidad Complutense de Madrid. En el se estudian diferentes metodos de verificación de usuarios mediante dinamica de pulsación.
+Esto es un Trabajo de Fin de Grado realizado por el alumno Fernando Rivilla Bravo de la Universidad Complutense de Madrid. En él se estudian diferentes metodos de verificación de usuarios mediante dinamica de pulsación.
 
 License
 ----
