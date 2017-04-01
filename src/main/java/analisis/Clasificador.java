@@ -8,6 +8,5 @@ import main.Password;
 
 public interface Clasificador {
 	public void entrenar(List<Password> conjunto_entrenamiento);
-	public void mostrar();
-	public void testear(List<Password> conjunto_test);
+	public Resultados testear(List<Password> conjunto_test);
 }

@@ -1,13 +1,13 @@
 package main;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
 import analisis.Clasificador;
 import analisis.Manhattan_detector;
+import analisis.Resultados;
 import muestreo.Muestreo;
 import extraccion.Extraccion;
 
@@ -47,22 +47,28 @@ public class Main {
 	    	
 	    }*/
 		
-        //Direccion del documento del que se extraeran los datos
-      	String csvFile = "files/muestreo/test.csv";
-      	//Extraemos la lista de Password
+        //Direccion de los documentos de donde se extraeran los datos
+      	String conjunto_entrenamiento = "files/muestreo/entrenamiento.csv";
+      	String conjunto_test = "files/muestreo/test.csv";
+      	//Extraemos la lista de Passwords de entrenamiento y test
       	Extraccion ext = new Extraccion();
-      	List<Password> lista_contraseñas = ext.extraccion_completa(csvFile);
-      	//
+      	List<Password> lista_entrenamiento = ext.extraccion_completa(conjunto_entrenamiento);
+      	List<Password> lista_test = ext.extraccion_completa(conjunto_test);
+      	//Lista de caracteristicas a contemplar en el analisis
       	List<String> caracteristicas = new ArrayList<String>();
       	caracteristicas.add("dt");
+      	//Umbrales de las caracteristicas a analizar
       	Map<String, Float> umbrales = new TreeMap<String, Float>();
-      	Float umb = new Float(0.001);
+      	Float umb = new Float(0.02);
       	umbrales.put("dt", umb);
+      	//Creamos el clasificador
       	Clasificador manhattan = new Manhattan_detector(caracteristicas, umbrales);
-      	
-      	manhattan.entrenar(lista_contraseñas);
-      	
-      	manhattan.mostrar();
+      	//Entrenamos el clasificador
+      	manhattan.entrenar(lista_entrenamiento);
+      	//Testeamos
+      	Resultados r = manhattan.testear(lista_test);
+      	//Mostramos el resultado
+      	r.mostrar();
 	}
 
 }
