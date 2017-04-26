@@ -7,6 +7,7 @@ import java.util.TreeMap;
 
 import analisis.Clasificador;
 import analisis.Manhattan_detector;
+import analisis.Mean_Standar_deviation;
 import analisis.Resultados;
 import muestreo.Muestreo;
 import extraccion.Extraccion;
@@ -14,39 +15,11 @@ import extraccion.Extraccion;
 public class Main {
 
 	public static void main(String[] args) {
-				
 		/*
-	    //Ahora recorreremos la lista de contraseñas para acceder a los valores que contienen
-	    //Para ello, creamos un iterador de la lista
-	    Iterator<Password> it = lista_contraseñas.iterator();
-	    //while(it.hasNext()){
-	    if(it.hasNext()){
-	    	Password act = it.next();
-	    	act.mostrarDatos();
-	    	
-	    	System.out.print(act.getSubject() + " " + act.getSession() + " " + act.getRep() + " ");
-	    	//Recuperamos la lista de tiempos 
-	    	List<Float> lista = act.getDwell_List();
-	    	//List<Float> lista = act.getFlight_up_down_List();
-	    	//List<Float> lista = act.getFlight_up_up_List();
-	    	//List<Float> lista = act.getFlight_down_down_List();
-	    	//List<Float> lista = act.getFlight_down_up_List();
-	    	//List<Float> lista = act.getNGraph_List();
-	    	
-	    	//Repetimos el proceso de recorrer una lista, esta vez la lista de tiempos de presion
-	    	Iterator<Float> it2 = lista.iterator();
-	    	while(it2.hasNext()){
-	    		Float number = it2.next();
-	    		//Mostramos por pantalla el tiempo de presion actual
-	    		if(it2.hasNext())
-	    			System.out.print(number + " ");
-	    		else
-	    			System.out.println(number);
-	    	}
-	    	
-	    	
-	    }*/
-		
+		Muestreo m = new Muestreo();
+		m.muestreo("files/DSL-StrongPasswordData.csv", new Float(3));
+		*/
+
         //Direccion de los documentos de donde se extraeran los datos
       	String conjunto_entrenamiento = "files/muestreo/entrenamiento.csv";
       	String conjunto_test = "files/muestreo/test.csv";
@@ -59,16 +32,23 @@ public class Main {
       	caracteristicas.add("dt");
       	//Umbrales de las caracteristicas a analizar
       	Map<String, Float> umbrales = new TreeMap<String, Float>();
-      	Float umb = new Float(0.02);
+      	Float umb = new Float(0.002);
       	umbrales.put("dt", umb);
+      	//Numero de desviaciones que serviran para calcular los umbrales en el segundo clasificador
+      	Float desv = new Float(1.5);
+      	
       	//Creamos el clasificador
-      	Clasificador manhattan = new Manhattan_detector(caracteristicas, umbrales);
+      	//Manhattan
+      	//Clasificador manhattan = new Manhattan_detector(caracteristicas, umbrales);
+      	//Mean-Standar derivation
+      	Clasificador mean_standarDeviation = new Mean_Standar_deviation(caracteristicas, desv);
       	//Entrenamos el clasificador
-      	manhattan.entrenar(lista_entrenamiento);
+      	mean_standarDeviation.entrenar(lista_entrenamiento);
       	//Testeamos
-      	Resultados r = manhattan.testear(lista_test);
+      	Resultados r = mean_standarDeviation.testear(lista_test);
       	//Mostramos el resultado
       	r.mostrar();
+    
 	}
 
 }

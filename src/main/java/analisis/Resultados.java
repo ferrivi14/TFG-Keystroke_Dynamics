@@ -2,10 +2,10 @@ package analisis;
 
 public class Resultados {
 	//False Rejection Rate (Tasa de falso rechazo)
-	Float FRR;
+	private Float FRR;
 	//False Acceptance Rate (Tasa de aceptacion falsa)
-	Float FAR;
-	Float ERR;
+	private Float FAR;
+	private Float ERR;
 	
 	public Resultados(Float fr, Float fa){
 		this.FRR = fr;
