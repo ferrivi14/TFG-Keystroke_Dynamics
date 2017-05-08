@@ -3,6 +3,7 @@ package analisis;
 import java.util.List;
 
 public class IntervalosPassword {
+	private String sujeto;
 	private List<Intervalo> dwell_list;
 	private List<Intervalo> flight_time_up_down;
 	private List<Intervalo> flight_time_up_up;
@@ -10,8 +11,14 @@ public class IntervalosPassword {
 	private List<Intervalo> flight_time_down_up;
 	private List<Intervalo> n_graph_list;
 	
-	public IntervalosPassword(){}
+	public IntervalosPassword(String subject){
+		this.sujeto = subject;
+	}
 	
+	public String getSujeto() {
+		return sujeto;
+	}
+
 	public List<Intervalo> getDwell_list() {
 		return dwell_list;
 	}

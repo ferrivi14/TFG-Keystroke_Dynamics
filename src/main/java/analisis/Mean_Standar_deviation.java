@@ -78,20 +78,20 @@ public class Mean_Standar_deviation  implements Clasificador{
 					}
 					//Flight times
 					else if(carAct.equalsIgnoreCase("ft1")){
-						passSujAct.setDwell_List(sumaDeListas(passSujAct.getFlight_up_down_List(), act.getFlight_up_down_List()));
+						passSujAct.setFlight_up_down_List(sumaDeListas(passSujAct.getFlight_up_down_List(), act.getFlight_up_down_List()));
 					}
 					else if(carAct.equalsIgnoreCase("ft2")){
-						passSujAct.setDwell_List(sumaDeListas(passSujAct.getFlight_up_up_List(), act.getFlight_up_up_List()));				
+						passSujAct.setFlight_up_up_List(sumaDeListas(passSujAct.getFlight_up_up_List(), act.getFlight_up_up_List()));				
 					}
 					else if(carAct.equalsIgnoreCase("ft3")){
-						passSujAct.setDwell_List(sumaDeListas(passSujAct.getFlight_down_down_List(), act.getFlight_down_down_List()));
+						passSujAct.setFlight_down_down_List(sumaDeListas(passSujAct.getFlight_down_down_List(), act.getFlight_down_down_List()));
 					}
 					else if(carAct.equalsIgnoreCase("ft4")){
-						passSujAct.setDwell_List(sumaDeListas(passSujAct.getFlight_down_up_List(), act.getFlight_down_up_List()));
+						passSujAct.setFlight_down_up_List(sumaDeListas(passSujAct.getFlight_down_up_List(), act.getFlight_down_up_List()));
 					}
 					//N-graphs
 					else if(carAct.equalsIgnoreCase("ng")){
-						passSujAct.setDwell_List(sumaDeListas(passSujAct.getNGraph_List(), act.getNGraph_List()));
+						passSujAct.setNGraph_List(sumaDeListas(passSujAct.getNGraph_List(), act.getNGraph_List()));
 					}
 				}
 			}
@@ -112,20 +112,20 @@ public class Mean_Standar_deviation  implements Clasificador{
 						}
 						//Flight times
 						else if(carAct.equalsIgnoreCase("ft1")){
-							passSujAct.setDwell_List(divisionLista(passSujAct.getFlight_up_down_List(), numMuestras));
+							passSujAct.setFlight_up_down_List(divisionLista(passSujAct.getFlight_up_down_List(), numMuestras));
 						}
 						else if(carAct.equalsIgnoreCase("ft2")){
-							passSujAct.setDwell_List(divisionLista(passSujAct.getFlight_up_up_List(), numMuestras));				
+							passSujAct.setFlight_up_up_List(divisionLista(passSujAct.getFlight_up_up_List(), numMuestras));				
 						}
 						else if(carAct.equalsIgnoreCase("ft3")){
-							passSujAct.setDwell_List(divisionLista(passSujAct.getFlight_down_down_List(), numMuestras));
+							passSujAct.setFlight_down_down_List(divisionLista(passSujAct.getFlight_down_down_List(), numMuestras));
 						}
 						else if(carAct.equalsIgnoreCase("ft4")){
-							passSujAct.setDwell_List(divisionLista(passSujAct.getFlight_down_up_List(), numMuestras));
+							passSujAct.setFlight_down_up_List(divisionLista(passSujAct.getFlight_down_up_List(), numMuestras));
 						}
 						//N-graphs
 						else if(carAct.equalsIgnoreCase("ng")){
-							passSujAct.setDwell_List(divisionLista(passSujAct.getNGraph_List(), numMuestras));
+							passSujAct.setNGraph_List(divisionLista(passSujAct.getNGraph_List(), numMuestras));
 						}
 					}
 					this.M.add(passSujAct);
@@ -147,20 +147,20 @@ public class Mean_Standar_deviation  implements Clasificador{
 					}
 					//Flight times
 					else if(carAct.equalsIgnoreCase("ft1")){
-						passSujAct.setDwell_List(act.getFlight_up_down_List());
+						passSujAct.setFlight_up_down_List(act.getFlight_up_down_List());
 					}
 					else if(carAct.equalsIgnoreCase("ft2")){
-						passSujAct.setDwell_List(act.getFlight_up_up_List());				
+						passSujAct.setFlight_up_up_List(act.getFlight_up_up_List());				
 					}
 					else if(carAct.equalsIgnoreCase("ft3")){
-						passSujAct.setDwell_List(act.getFlight_down_down_List());
+						passSujAct.setFlight_down_down_List(act.getFlight_down_down_List());
 					}
 					else if(carAct.equalsIgnoreCase("ft4")){
-						passSujAct.setDwell_List(act.getFlight_down_up_List());
+						passSujAct.setFlight_down_up_List(act.getFlight_down_up_List());
 					}
 					//N-graphs
 					else if(carAct.equalsIgnoreCase("ng")){
-						passSujAct.setDwell_List(act.getNGraph_List());
+						passSujAct.setNGraph_List(act.getNGraph_List());
 					}
 				}
 				//Reestablecemos el numero de muestras
@@ -183,20 +183,20 @@ public class Mean_Standar_deviation  implements Clasificador{
 						}
 						//Flight times
 						else if(carAct.equalsIgnoreCase("ft1")){
-							passSujAct.setDwell_List(divisionLista(passSujAct.getFlight_up_down_List(), numMuestras));
+							passSujAct.setFlight_up_down_List(divisionLista(passSujAct.getFlight_up_down_List(), numMuestras));
 						}
 						else if(carAct.equalsIgnoreCase("ft2")){
-							passSujAct.setDwell_List(divisionLista(passSujAct.getFlight_up_up_List(), numMuestras));				
+							passSujAct.setFlight_up_up_List(divisionLista(passSujAct.getFlight_up_up_List(), numMuestras));				
 						}
 						else if(carAct.equalsIgnoreCase("ft3")){
-							passSujAct.setDwell_List(divisionLista(passSujAct.getFlight_down_down_List(), numMuestras));
+							passSujAct.setFlight_down_down_List(divisionLista(passSujAct.getFlight_down_down_List(), numMuestras));
 						}
 						else if(carAct.equalsIgnoreCase("ft4")){
-							passSujAct.setDwell_List(divisionLista(passSujAct.getFlight_down_up_List(), numMuestras));
+							passSujAct.setFlight_down_up_List(divisionLista(passSujAct.getFlight_down_up_List(), numMuestras));
 						}
 						//N-graphs
 						else if(carAct.equalsIgnoreCase("ng")){
-							passSujAct.setDwell_List(divisionLista(passSujAct.getNGraph_List(), numMuestras));
+							passSujAct.setNGraph_List(divisionLista(passSujAct.getNGraph_List(), numMuestras));
 						}
 					}
 					M.add(passSujAct);

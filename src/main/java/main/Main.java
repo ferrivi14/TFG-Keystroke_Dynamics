@@ -9,6 +9,7 @@ import analisis.Clasificador;
 import analisis.Manhattan_detector;
 import analisis.Mean_Standar_deviation;
 import analisis.Resultados;
+import analisis.Z_Scores;
 import muestreo.Muestreo;
 import extraccion.Extraccion;
 
@@ -34,18 +35,26 @@ public class Main {
       	Map<String, Float> umbrales = new TreeMap<String, Float>();
       	Float umb = new Float(0.002);
       	umbrales.put("dt", umb);
-      	//Numero de desviaciones que serviran para calcular los umbrales en el segundo clasificador
+      	//Numero de desviaciones que serviran para calcular los umbrales en el Mean, Standar derivation
       	Float desv = new Float(1.5);
-      	
+      	//Distribucion Estandar (Entre 2 y 3)
+      	Float distribEstandar = new Float(3);
+      	//Porcentaje de aciertos que debe tener la contraseña para ser aceptada en el Z-Scores
+      	Float porAciertos = new Float(90);
       	//Creamos el clasificador
+      	
       	//Manhattan
       	//Clasificador manhattan = new Manhattan_detector(caracteristicas, umbrales);
+      	
       	//Mean-Standar derivation
-      	Clasificador mean_standarDeviation = new Mean_Standar_deviation(caracteristicas, desv);
+      	//Clasificador mean_standarDeviation = new Mean_Standar_deviation(caracteristicas, desv);
+      	
+      	//Z-scores
+      	Clasificador z_scores = new Z_Scores(caracteristicas, distribEstandar, porAciertos);
       	//Entrenamos el clasificador
-      	mean_standarDeviation.entrenar(lista_entrenamiento);
+      	z_scores.entrenar(lista_entrenamiento);
       	//Testeamos
-      	Resultados r = mean_standarDeviation.testear(lista_test);
+      	Resultados r = z_scores.testear(lista_test);
       	//Mostramos el resultado
       	r.mostrar();
     
