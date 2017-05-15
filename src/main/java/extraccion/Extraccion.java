@@ -1,10 +1,13 @@
 package extraccion;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import main.Password;
@@ -165,5 +168,38 @@ public class Extraccion{
         }
 		return lista_contraseñas;
 	}
-	
+	//Funcion que genera un archivo .txt a traves de una lista de string
+	public void generacion_txt(List<String> lista, String nombre){
+		String ruta = "files/resultados/" + nombre + ".txt";
+        BufferedWriter bw = null;
+
+        try 
+        {
+            bw = new BufferedWriter(new FileWriter(ruta));
+            Iterator<String> it = lista.iterator();
+            
+	    	while(it.hasNext()){
+	    		String linea = it.next();
+	    		bw.write(linea + "\r\n");
+	    	}
+        }
+        catch (FileNotFoundException e) {
+        	//e.printStackTrace();
+            System.err.println(e.getMessage());
+        }
+        catch (IOException e) {
+            //e.printStackTrace();
+            System.err.println(e.getMessage());
+        }
+        finally {
+            if (bw != null) {
+                try {
+                    bw.close();
+                } catch (IOException e) {
+                    //e.printStackTrace();
+                    System.err.println(e.getMessage());
+                }
+            }
+        }
+	}
 }

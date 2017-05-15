@@ -453,7 +453,7 @@ public class Mean_Standar_deviation  implements Clasificador{
 				}
 			}
 		}
-		System.out.println(falsosRechazados +" "+ falsosAceptados +" "+ numPasswords);
+		//System.out.println(falsosRechazados +" "+ falsosAceptados +" "+ numPasswords);
 		return new Resultados(falsosRechazados/numPasswords, falsosAceptados/numPasswords);
 	}
 

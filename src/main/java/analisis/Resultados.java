@@ -14,7 +14,12 @@ public class Resultados {
 	public Resultados(Float err){
 		this.ERR = err;
 	}
-	
+	public Float getFRR() {
+		return FRR;
+	}
+	public Float getFAR() {
+		return FAR;
+	}
 	public void mostrar(){
 		if(this.FRR != null)
 			System.out.println("FRR = " + this.FRR);
