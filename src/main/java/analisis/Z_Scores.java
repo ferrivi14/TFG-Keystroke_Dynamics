@@ -587,7 +587,7 @@ public class Z_Scores implements Clasificador {
 	
 	public Resultados testear(List<Password> conjunto_test) {
 		int numPasswords = 0;
-		float falsosAceptados = 0, falsosRechazados = 0;
+		float falsosAceptados = 0, falsosRechazados = 0, impostores = 0, clientesVerdaderos = 0;
 		String sujetoAct = "";
 		boolean valido;
 		
@@ -603,6 +603,12 @@ public class Z_Scores implements Clasificador {
 				numPasswords++;
 				//Obtenemos el siguiente password a analizar
 				Password act = it2.next();
+				//Aumentamos el numero de impostores o clientes reales
+				if(sujetoAct.equalsIgnoreCase(act.getSubject()))
+					clientesVerdaderos++;
+				else
+					impostores++;
+				
 				try{
 					//Verificamos la password
 					valido = verificarPassword(act, sujetoAct);
@@ -618,7 +624,7 @@ public class Z_Scores implements Clasificador {
 				}
 			}
 		}
-		System.out.println(falsosRechazados +" "+ falsosAceptados +" "+ numPasswords);
-		return new Resultados(falsosRechazados/numPasswords, falsosAceptados/numPasswords);
+		//Calculamos los resultados y los devolvemos
+		return new Resultados(falsosRechazados/clientesVerdaderos, falsosAceptados/impostores);
 	}
 }

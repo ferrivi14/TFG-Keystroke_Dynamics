@@ -511,7 +511,7 @@ public class Manhattan_detector implements Clasificador {
 	//Comprueba cada uno de los password con el resto
 	public Resultados testear(List<Password> conjunto_test) {
 		int numPasswords = 0;
-		float falsosAceptados = 0, falsosRechazados = 0;
+		float falsosAceptados = 0, falsosRechazados = 0, impostores = 0, clientesVerdaderos = 0;
 		String sujetoAct = "";
 		boolean valido;
 		
@@ -524,8 +524,14 @@ public class Manhattan_detector implements Clasificador {
 			while(it2.hasNext()){
 				//Aumentamos el numero de passwords analizados
 				numPasswords++;
+				//Obtenemos el siguiente password a analizar
 				Password act = it2.next();
-				//System.out.println("Sujeto: " + sujetoAct + " Password: "+ act.getSubject());
+				//Aumentamos el numero de impostores o clientes reales
+				if(sujetoAct.equalsIgnoreCase(act.getSubject()))
+					clientesVerdaderos++;
+				else
+					impostores++;
+				
 				try{
 					valido = verificarPassword(act, sujetoAct);
 					//Si accepta el password pero los sujetos son distintos, aumentamos los falsos acertados
@@ -540,7 +546,7 @@ public class Manhattan_detector implements Clasificador {
 				}
 			}
 		}
-		//System.out.println(falsosRechazados +" "+ falsosAceptados +" "+ numPasswords);
-		return new Resultados(falsosRechazados/numPasswords, falsosAceptados/numPasswords);
+		//Calculamos los resultados y los devolvemos
+		return new Resultados(falsosRechazados/clientesVerdaderos, falsosAceptados/impostores);
 	}
 }

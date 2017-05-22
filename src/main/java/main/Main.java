@@ -68,8 +68,8 @@ public class Main {
       	r.mostrar();
       	*/
       	Evaluacion ev = new Evaluacion();
-      	//ev.evaluacionManhattan(lista_entrenamiento, lista_test);
-        //ev.evaluacionMean_StandarDerivation(lista_entrenamiento, lista_test);
+      	ev.evaluacionManhattan(lista_entrenamiento, lista_test);
+        ev.evaluacionMean_StandarDerivation(lista_entrenamiento, lista_test);
         //ev.evaluacionZscores(lista_entrenamiento, lista_test);
       	System.out.println("Evaluación Finalizada");
 	}
