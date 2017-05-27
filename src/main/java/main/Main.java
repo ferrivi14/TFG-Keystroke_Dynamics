@@ -35,7 +35,7 @@ public class Main {
       	caracteristicas.add("ft1");
       	//Umbrales de las caracteristicas a analizar
       	Map<String, Float> umbrales = new TreeMap<String, Float>();
-      	Float umb = new Float(-0.4);
+      	Float umb = new Float(0.4);
       	umbrales.put("ft1", umb);
       	//Numero de desviaciones que serviran para calcular los umbrales en el Mean, Standar derivation
       	Float desv = new Float(1.5);
@@ -67,11 +67,13 @@ public class Main {
       	//Mostramos el resultado
       	r.mostrar();
       	*/
+      	
       	Evaluacion ev = new Evaluacion();
-      	ev.evaluacionManhattan(lista_entrenamiento, lista_test);
-        ev.evaluacionMean_StandarDerivation(lista_entrenamiento, lista_test);
-        //ev.evaluacionZscores(lista_entrenamiento, lista_test);
+      	//ev.evaluacionManhattan(lista_entrenamiento, lista_test);
+        //ev.evaluacionMean_StandarDerivation(lista_entrenamiento, lista_test);
+        ev.evaluacionZscores(lista_entrenamiento, lista_test);
       	System.out.println("Evaluación Finalizada");
+      	
 	}
 
 }

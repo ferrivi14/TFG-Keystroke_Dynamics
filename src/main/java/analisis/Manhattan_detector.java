@@ -414,7 +414,8 @@ public class Manhattan_detector implements Clasificador {
 	}
 	
 	private Float distanciaEntreElementos(Float valor, Float media, Float desviacion){
-		return (valor - media)/desviacion;
+		Float dividendo = Math.abs(valor - media);
+		return (dividendo)/desviacion;
 	}
 	//Calcula la distancia en unidades de desviación estándar entre la plantilla y la muestra se calcula mediante
 	private Float distanciaEntreCaracteristicas(List<Float> l, List<Float> media, List<Float> desv){
