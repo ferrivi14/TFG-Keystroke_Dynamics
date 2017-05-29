@@ -1,0 +1,3 @@
+FRR	FAR	Caracteristicas
+0.125	0.387	ft4(1.5)
+0.06985294	0.6237206	ft4(2.0)

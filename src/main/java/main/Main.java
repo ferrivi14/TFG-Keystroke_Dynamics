@@ -69,13 +69,14 @@ public class Main {
       	*/
       	
       	Evaluacion ev = new Evaluacion();
-      	//ev.evaluacionManhattan(lista_entrenamiento, lista_test);
+      	ev.evaluacionManhattan(lista_entrenamiento, lista_test);
         //ev.evaluacionMean_StandarDerivation(lista_entrenamiento, lista_test);
         //ev.evaluacionZscores(lista_entrenamiento, lista_test);
-      	//System.out.println("Evaluación Finalizada");
+      	System.out.println("Evaluación Finalizada");
       	
+      	ev.generarTxtERR("Manhattan");	
       	//ev.generarTxtERR("Mean_standarDeviation");
-      	ev.generarTxtERR("Zscores");
+      	//ev.generarTxtERR("Zscores");
       	System.out.println("Obtencion ERRs Finalizada");
 	}
 

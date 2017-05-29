@@ -79,24 +79,39 @@ public class Evaluacion {
       	//Umbrales de las caracteristicas a analizar
       	Map<String, Float> umbrales = new TreeMap<String, Float>();
       	List<Float> umbsDT = new ArrayList<Float>();
+      	umbsDT.add(new Float(1.25));
       	umbsDT.add(new Float(1.5));
+      	umbsDT.add(new Float(1.75));
       	umbsDT.add(new Float(2));
+      	umbsDT.add(new Float(2.25));
 
       	List<Float> umbsFT1 = new ArrayList<Float>();
+      	umbsFT1.add(new Float(1.25));
       	umbsFT1.add(new Float(1.5));
+      	umbsFT1.add(new Float(1.75));
       	umbsFT1.add(new Float(2));
+      	umbsFT1.add(new Float(2.25));
       	
       	List<Float> umbsFT2 = new ArrayList<Float>();
+      	umbsFT2.add(new Float(1.25));
       	umbsFT2.add(new Float(1.5));
+      	umbsFT2.add(new Float(1.75));
       	umbsFT2.add(new Float(2));
+      	umbsFT2.add(new Float(2.25));
       	
       	List<Float> umbsFT3 = new ArrayList<Float>();
+      	umbsFT3.add(new Float(1.25));
       	umbsFT3.add(new Float(1.5));
+      	umbsFT3.add(new Float(1.75));
       	umbsFT3.add(new Float(2));
+      	umbsFT3.add(new Float(2.25));
       	
       	List<Float> umbsFT4 = new ArrayList<Float>();
+      	umbsFT4.add(new Float(1.25));
       	umbsFT4.add(new Float(1.5));
+      	umbsFT4.add(new Float(1.75));
       	umbsFT4.add(new Float(2));
+      	umbsFT4.add(new Float(2.25));
       	
       	
       	umbrales.put("dt", umbsDT.get(0));
@@ -108,7 +123,7 @@ public class Evaluacion {
       	
       	String resultadoAct = "", tituloTabla;
       	//Realizamos una ejecucion del algoritmo para cada combinacion de caracterisiticas
-      	for(int i = 0; i < 3; i++){
+      	for(int i = 0; i < 6; i++){
       		if(i == 0){
       			caracteristicas.add("dt");
       		}
@@ -116,54 +131,99 @@ public class Evaluacion {
       			umbrales.put("dt", umbsDT.get(1));
       		}
       		else if(i == 2){
+      			umbrales.put("dt", umbsDT.get(2));
+      		}
+      		else if(i == 3){
+      			umbrales.put("dt", umbsDT.get(3));
+      		}
+      		else if(i == 4){
+      			umbrales.put("dt", umbsDT.get(4));
+      		}
+      		else if(i == 5){
       			caracteristicas.remove("dt");
       			umbrales.put("dt", umbsDT.get(0));
       		}
       		//Siguiente caracteristica
-      		for(int j = 0; j < 3; j++){
+      		for(int j = 0; j < 6; j++){
       			if(j == 0){
           			caracteristicas.add("ft1");
           		}
       			else if(j == 1){
           			umbrales.put("ft1", umbsFT1.get(1));
           		}
-          		else if(j == 2){
+      			else if(j == 2){
+          			umbrales.put("ft1", umbsFT1.get(2));
+          		}
+      			else if(j == 3){
+          			umbrales.put("ft1", umbsFT1.get(3));
+          		}
+      			else if(j == 4){
+          			umbrales.put("ft1", umbsFT1.get(4));
+          		}
+          		else if(j == 5){
           			caracteristicas.remove("ft1");
           	      	umbrales.put("ft1", umbsFT1.get(0));
           		}
       			//Siguiente caracteristica
-      			for(int k = 0; k < 3; k++){
+      			for(int k = 0; k < 6; k++){
       				if(k == 0){
               			caracteristicas.add("ft2");
               		}
       				else if(k == 1){
               			umbrales.put("ft2", umbsFT2.get(1));
               		}
-              		else if(k == 2){
+      				else if(k == 2){
+              			umbrales.put("ft2", umbsFT2.get(2));
+              		}
+      				else if(k == 3){
+              			umbrales.put("ft2", umbsFT2.get(3));
+              		}
+      				else if(k == 4){
+              			umbrales.put("ft2", umbsFT2.get(4));
+              		}
+              		else if(k == 5){
               			caracteristicas.remove("ft2");
               	      	umbrales.put("ft2", umbsFT2.get(0));
               		}
       				//Siguiente caracteristica
-      				for(int l = 0; l < 3; l++){
+      				for(int l = 0; l < 6; l++){
           				if(l == 0){
                   			caracteristicas.add("ft3");
                   		}
           				else if(l == 1){
                   			umbrales.put("ft3", umbsFT3.get(1));
                   		}
-                  		else if(l == 2){
+          				else if(l == 2){
+                  			umbrales.put("ft3", umbsFT3.get(2));
+                  		}
+          				else if(l == 3){
+                  			umbrales.put("ft3", umbsFT3.get(3));
+                  		}
+          				else if(l == 4){
+                  			umbrales.put("ft3", umbsFT3.get(4));
+                  		}
+                  		else if(l == 5){
                   			caracteristicas.remove("ft3");
                   	      	umbrales.put("ft3", umbsFT3.get(0));
                   		}
           				//Siguiente caracteristica
-          				for(int m = 0; m < 3; m++){
+          				for(int m = 0; m < 6; m++){
               				if(m == 0){
                       			caracteristicas.add("ft4");
                       		}
               				else if(m == 1){
                       			umbrales.put("ft4", umbsFT4.get(1));
                       		}
-                      		else if(m == 2){
+              				else if(m == 2){
+                      			umbrales.put("ft4", umbsFT4.get(2));
+                      		}
+              				else if(m == 3){
+                      			umbrales.put("ft4", umbsFT4.get(3));
+                      		}
+              				else if(m == 4){
+                      			umbrales.put("ft4", umbsFT4.get(4));
+                      		}
+                      		else if(m == 5){
                       			caracteristicas.remove("ft4");
                       	      	umbrales.put("ft4", umbsFT4.get(0));
                       		}
