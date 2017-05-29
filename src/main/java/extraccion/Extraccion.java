@@ -202,4 +202,60 @@ public class Extraccion{
             }
         }
 	}
+	
+	//Funcion que dado un fichero de resultados, devuelve el mejor ERR y el umbral al que corresponde en una cadena de caracteres
+	public String obtenerERR_Umbral(String csvFile){
+		
+        BufferedReader br = null;
+        String line = "";
+        String separador = "	";
+        
+        Float FRR_actual;
+        Float FAR_actual;
+        Float ERR = null;
+        Float difAct;
+        Float difMenor = Float.MAX_VALUE;
+        String umbAct;
+        String umbDefinitivo = null;
+        
+        try 
+        {
+            br = new BufferedReader(new FileReader(csvFile));
+            //Si existe una primera linea, continuamos leyendo porque en ella se guardan los titulos de las columnas
+            if((line = br.readLine()) != null){
+            	//Mientras que exista una linea, seguimos leyendo
+	            while ((line = br.readLine()) != null) {	
+	                //Usamos la tabulacion como separador
+	                String[] columnas = line.split(separador);
+	                //Obtenemos los valores actuales
+	                FRR_actual = Float.parseFloat(columnas[0]);
+	                FAR_actual = Float.parseFloat(columnas[1]);
+	                umbAct = columnas[2];
+	                //Comprobamos si su diferencia es la menor hasta el momento
+	                difAct = Math.abs(FRR_actual - FAR_actual);
+	                if(difAct < difMenor){
+	                	difMenor = difAct;
+	                	ERR = (FRR_actual + FAR_actual)/new Float(2);
+	                	umbDefinitivo = umbAct;
+	                }
+	            }
+        	}   
+        }
+        catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+        finally {
+            if (br != null) {
+                try {
+                    br.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+		return (umbDefinitivo + "	" + ERR);
+	}
 }

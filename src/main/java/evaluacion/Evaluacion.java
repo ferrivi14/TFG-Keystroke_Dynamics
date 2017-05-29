@@ -221,15 +221,13 @@ public class Evaluacion {
 		
       	//Desviaciones
       	List<Float> desviaciones = new ArrayList<Float>();
-      	desviaciones.add(new Float(1.0));
-      	desviaciones.add(new Float(1.25));
-      	desviaciones.add(new Float(1.5));
-      	desviaciones.add(new Float(1.75));
-      	desviaciones.add(new Float(2.0));
       	
+      	for(float i = 0; i <= 3; i = i + new Float(0.05)){
+      		desviaciones.add(new Float(i));
+      	}
       	String resultadoAct = "", tituloTabla;
       	//Realizamos una ejecucion del algoritmo para cada combinacion de caracterisiticas
-      	for(int h = 0; h < 5; h++){
+      	for(int h = 0; h < desviaciones.size(); h++){
       		for(int i = 0; i < 2; i++){
           		if(i == 0){
           			caracteristicas.add("dt");
@@ -327,16 +325,13 @@ public class Evaluacion {
       	
       	//Porcentajes de aciertos
       	List<Float> porAciertos = new ArrayList<Float>();
-      	porAciertos.add(new Float(50));
-      	porAciertos.add(new Float(60));
-      	porAciertos.add(new Float(70));
-      	porAciertos.add(new Float(80));
-      	porAciertos.add(new Float(90));
-      	porAciertos.add(new Float(100));
+      	for(int i = 0; i <= 100; i++){
+      		porAciertos.add(new Float(i));
+      	}
       	
       	String resultadoAct = "", tituloTabla;
       	//Realizamos una ejecucion del algoritmo para cada combinacion de caracterisiticas
-      	for(int g = 0; g < 6; g++){
+      	for(int g = 0; g <= 100; g++){
       		for(int i = 0; i < 2; i++){
           		if(i == 0){
           			caracteristicas.add("dt");
@@ -421,5 +416,65 @@ public class Evaluacion {
       	}
 		
 	}
-	
+	public void generarTxtERR(String carpeta){
+		List<String> resultados = new ArrayList<String>();
+		resultados.add("Características	Umbral	ERR");
+		String tituloTabla, errAct;
+		Extraccion ex = new Extraccion();
+		//Caracteristicas
+		List<String> caracteristicas = new ArrayList<String>();
+		
+		for(int i = 0; i < 2; i++){
+      		if(i == 0){
+      			caracteristicas.add("dt");
+      		}
+      		else if(i == 1){
+      			caracteristicas.remove("dt");
+      		}
+      		//Siguiente caracteristica
+      		for(int j = 0; j < 2; j++){
+      			if(j == 0){
+          			caracteristicas.add("ft1");
+          		}
+          		else if(j == 1){
+          			caracteristicas.remove("ft1");
+          		}
+      			//Siguiente caracteristica
+      			for(int k = 0; k < 2; k++){
+      				if(k == 0){
+              			caracteristicas.add("ft2");
+              		}
+              		else if(k == 1){
+              			caracteristicas.remove("ft2");
+              		}
+      				//Siguiente caracteristica
+      				for(int l = 0; l < 2; l++){
+          				if(l == 0){
+                  			caracteristicas.add("ft3");
+                  		}
+                  		else if(l == 1){
+                  			caracteristicas.remove("ft3");
+                  		}
+          				//Siguiente caracteristica
+          				for(int m = 0; m < 2; m++){
+              				if(m == 0){
+                      			caracteristicas.add("ft4");
+                      		}
+                      		else if(m == 1){
+                      			caracteristicas.remove("ft4");
+                      		}
+              				
+              				//Si la lista de caracteristicas no esta vacia
+              				if(!caracteristicas.isEmpty()){
+              					tituloTabla = escribirCarac4(caracteristicas);
+              					errAct = ex.obtenerERR_Umbral("files/resultados/" + carpeta + "/" + tituloTabla + ".txt");
+              					resultados.add(tituloTabla+ "	" + errAct); 
+              				}
+          				}
+      				}
+      			}
+      		}
+		}
+      	ex.generacion_txt(resultados, "ERR/" + carpeta);		
+	}
 }
